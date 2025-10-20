@@ -1,9 +1,0 @@
-# Netlify redirects for SPA routing
-# This ensures that all routes are served by index.html for client-side routing
-# while maintaining proper 404 status codes for the custom 404 page
-
-# Serve index.html for all routes that don't match static files
-/*    /index.html   200
-
-# Note: The React Router will handle showing the 404 component for unmatched routes
-# The 200 status is correct here as we're serving the SPA, and the 404 logic is handled client-side

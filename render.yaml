@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: mandela-international-school
+    env: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        fromDatabase:
+          name: mandela-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: CLOUD_NAME
+        sync: false
+      - key: API_KEY
+        sync: false
+      - key: API_SECRET
+        sync: false

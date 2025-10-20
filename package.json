@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon backend/server.js",
-    "build": "echo 'Backend build complete'",
+    "build": "npm install --prefix frontend && npm run build --prefix frontend",
     "start": "node backend/server.js",
-    "vercel-build": "echo 'Vercel build complete'"
+    "frontend:dev": "npm run dev --prefix frontend",
+    "frontend:build": "npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",
