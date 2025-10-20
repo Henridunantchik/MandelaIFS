@@ -16,6 +16,7 @@ import Comments from './pages/Comments'
 import UpdateBlog from './pages/UpdateBlog'
 import ProtectedRoute from './components/ProtectedRoute'
 import SearchList from './pages/SearchList'
+import NotFound from './pages/NotFound'
 
 const router = createBrowserRouter([
   {
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
     path: "/login",
     element: <><Navbar/><Login /></>
   },
+  {
+    path: "*",
+    element: <><Navbar/><NotFound /><Footer/></>
+  }
 ])
 
 const App = () => {
