@@ -27,8 +27,8 @@ app.use(cors({
     credentials: true
 }))
 
-// Health check endpoint
-app.get("/", (req, res) => {
+// Health check endpoint (moved to /api/health to avoid conflict with frontend)
+app.get("/api/health", (req, res) => {
     res.json({ 
         message: "Mandela International School API is running!",
         timestamp: new Date().toISOString(),
