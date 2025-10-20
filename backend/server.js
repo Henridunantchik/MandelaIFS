@@ -13,8 +13,16 @@ const app = express()
 
 const DEFAULT_PORT = Number(process.env.PORT) || 3000
 
-// Connect to database
-connectDB()
+// Database connection middleware
+app.use(async (req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (error) {
+        console.error('Database connection failed:', error);
+        res.status(500).json({ error: 'Database connection failed' });
+    }
+});
 
 // default middleware
 app.use(express.json());
@@ -44,7 +52,11 @@ app.use(cors({
 
 // Health check endpoint
 app.get("/", (req, res) => {
-    res.json({ message: "Mandela International School API is running!" });
+    res.json({ 
+        message: "Mandela International School API is running!",
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV || 'development'
+    });
 });
 
 // APIs
