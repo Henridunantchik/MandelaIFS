@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaUserCircle } from "react-icons/fa";
 import { FaChevronRight } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { Button } from './ui/button';
 import UserLogo from "../assets/user.jpg"
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { useSelector } from 'react-redux';
+import { NAV_MENU } from '@/constants/navMenu';
 
 const ResponsiveMenu = ({ openNav, setOpenNav, logoutHandler }) => {
     const {user} = useSelector(store=>store.auth)
@@ -25,25 +26,90 @@ const ResponsiveMenu = ({ openNav, setOpenNav, logoutHandler }) => {
                         <h1 className='text-sm text-slate-500'>Premium User</h1>
                     </div>
                 </div>
-                <nav className='mt-12'>
-                    <ul className='flex flex-col gap-7 text-2xl font-semibold '>
-                        <Link to="/" onClick={() => setOpenNav(false)}><li className='cursor-pointer'>Home</li></Link>
-                        <Link to="/blogs" onClick={() => setOpenNav(false)}><li className='cursor-pointer'>Blog</li></Link>
-                        <Link to="/about" onClick={() => setOpenNav(false)}><li className='cursor-pointer' >About</li></Link>
+                <nav className='mt-10'>
+                    <MobileMenuTree nav={NAV_MENU} onNavigate={() => setOpenNav(false)} />
+                    <div className='mt-8'>
                         {
-                            user? <Button onClick={()=>{logoutHandler(), setOpenNav(false)}}>Logout</Button> : <Link to={'/signup'} onClick={() => setOpenNav(false)}><Button>Signup</Button></Link>
+                            user ? (
+                              <Button className='w-full' onClick={() => { logoutHandler(); setOpenNav(false) }}>Logout</Button>
+                            ) : (
+                              <Link to={'/signup'} onClick={() => setOpenNav(false)}><Button className='w-full'>Signup</Button></Link>
+                            )
                         }
-
-                    </ul>
+                    </div>
                 </nav>
             </div>
             <div className='pb-20'>
                 <h1>
-                    Made with ❤️ by Rohit
+                    Made with ❤️ by Kuna Creatives Africa
                 </h1>
             </div>
         </div>
     )
+}
+
+function MobileMenuTree({ nav, onNavigate }) {
+  const [open, setOpen] = useState({})
+
+  const toggle = (key) => setOpen((o) => ({ ...o, [key]: !o[key] }))
+
+  return (
+    <ul className='flex flex-col gap-3'>
+      {nav.map((item, idx) => {
+        const key = `lvl1-${idx}`
+        const hasChildren = Array.isArray(item.children) && item.children.length
+        return (
+          <li key={key} className='border-b border-slate-200/70 dark:border-gray-700 pb-2'>
+            <div className='flex items-center justify-between'>
+              {hasChildren ? (
+                <button onClick={() => toggle(key)} className='text-lg font-semibold text-left'>
+                  {item.label}
+                </button>
+              ) : (
+                <Link to={item.to || '#'} onClick={onNavigate} className='text-lg font-semibold'>
+                  {item.label}
+                </Link>
+              )}
+              {hasChildren && (
+                <FaChevronRight className={`transition-transform ${open[key] ? 'rotate-90' : ''}`} />
+              )}
+            </div>
+            {hasChildren && open[key] && (
+              <div className='mt-2 pl-3 flex flex-col gap-2'>
+                {/* If second level has groups */}
+                {item.children.some(c => c.children) ? (
+                  item.children.map((group, gIdx) => (
+                    <div key={`grp-${idx}-${gIdx}`} className=''>
+                      <div className='text-sm uppercase tracking-wide opacity-70 mb-1'>{group.label}</div>
+                      <ul className='flex flex-col gap-1'>
+                        {(group.children || []).map((sub, sIdx) => (
+                          <li key={`sub-${idx}-${gIdx}-${sIdx}`}>
+                            <Link to={sub.to || '#'} onClick={onNavigate} className='text-base'>
+                              {sub.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))
+                ) : (
+                  <ul className='flex flex-col gap-1'>
+                    {item.children.map((sub, sIdx) => (
+                      <li key={`sub-${idx}-${sIdx}`}>
+                        <Link to={sub.to || '#'} onClick={onNavigate} className='text-base'>
+                          {sub.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+          </li>
+        )
+      })}
+    </ul>
+  )
 }
 
 export default ResponsiveMenu

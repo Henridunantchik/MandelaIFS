@@ -93,10 +93,20 @@ export const login = async(req, res) => {
         }
         
         const token = await jwt.sign({userId:user._id}, process.env.SECRET_KEY, { expiresIn: '1d' })
-        return res.status(200).cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpsOnly: true, sameSite: "strict" }).json({
+        const isProd = process.env.NODE_ENV === 'production'
+        // In dev with Vite (5173) calling API (3000), cross-site cookies require SameSite=None.
+        // Secure is recommended; for local HTTP, set secure false if needed.
+        const cookieOptions = {
+            maxAge: 1 * 24 * 60 * 60 * 1000,
+            httpOnly: true,
+            sameSite: isProd ? 'none' : 'none',
+            secure: isProd ? true : false,
+        }
+        return res.status(200).cookie("token", token, cookieOptions).json({
             success:true,
             message:`Welcome back ${user.firstName}`,
-            user
+            user,
+            token
         })
     } catch (error) {
         console.log(error);

@@ -6,6 +6,9 @@ import Cycle from '@/components/Cycle'
 import MissionValeur from '@/components/MissionValeur'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
+import TemoignagesVideo from '@/components/TemoignagesVideo'
+import SchoolEvents from '@/components/SchoolEvents'
+// import Partners from '@/components/Partners'
 
 const Home = () => {
   return (
@@ -14,7 +17,10 @@ const Home = () => {
       <HomeFirst/>
       <Cycle/>
       <MissionValeur/>
+      <TemoignagesVideo/>
+      <SchoolEvents/>
       <RecentBlog/>
+      {/* <Partners/> */}
     </div>
   )
 }
