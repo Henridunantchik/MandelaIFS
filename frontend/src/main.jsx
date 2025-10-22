@@ -1,3 +1,13 @@
+/**
+ * Website Author: Henri-Dunant CHIK
+ * Email: hdchikuru7@gmail.com
+ * GitHub: https://github.com/Henridunantchik
+ * Phone: +256773840148
+ * 
+ * Development: Kuna Creatives Africa
+ * Website: https://www.kunacreatives.africa/
+ */
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
@@ -16,7 +26,7 @@ createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor} >
         <ThemeProvider>
-        <App />
+          <App />
         </ThemeProvider>
       </PersistGate>
     </Provider>

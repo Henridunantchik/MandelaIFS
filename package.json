@@ -11,7 +11,11 @@
     "frontend:build": "npm run build --prefix frontend"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Henri-Dunant CHIK",
+    "email": "hdchikuru7@gmail.com",
+    "url": "https://github.com/Henridunantchik"
+  },
   "license": "ISC",
   "description": "",
   "dependencies": {

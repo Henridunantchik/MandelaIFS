@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": {
+    "name": "Henri-Dunant CHIK",
+    "email": "hdchikuru7@gmail.com",
+    "url": "https://github.com/Henridunantchik"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

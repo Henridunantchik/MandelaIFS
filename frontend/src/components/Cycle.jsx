@@ -31,15 +31,15 @@ const SAMPLE = [
 const Cycle = () => {
 
   return (
-    <section id="sections" className="py-12 md:py-16 bg-slate-50 dark:bg-gray-950">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="sections">
+      <div>
         <div className='max-w-6xl mx-auto flex flex-col items-center gap-3 mb-8'>
-          <h1 className='text-3xl md:text-4xl font-bold'>Les Cycles de Mandela IFS</h1>
+          <h1 className='text-3xl md:text-4xl font-bold text-slate-900 dark:text-white'>Les Cycles de Mandela IFS</h1>
           <hr className='w-20 md:w-24 border-2 border-blue-500 rounded-full' />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {SAMPLE.slice(0,3).map((item, idx) => (
+          {SAMPLE.slice(0, 3).map((item, idx) => (
             <Card key={`${item.title}-${idx}`} className="shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
               <div className="relative h-64 w-full bg-gray-100">
                 {/* Replace with real <img> or Next/Image when available */}
@@ -48,7 +48,7 @@ const Cycle = () => {
                 <div className="absolute bottom-0 left-0 right-0 p-3">
                   <h3 className="text-white font-semibold">{item.title}</h3>
                   <div className="flex flex-wrap gap-2 mt-2">
-                    {item.tags.slice(0,3).map((tag, tIdx) => (
+                    {item.tags.slice(0, 3).map((tag, tIdx) => (
                       <span key={tIdx} className="px-2 py-0.5 rounded-full text-xs bg-amber-500 text-white">{tag}</span>
                     ))}
                     {item.tags.length > 3 && (
@@ -58,7 +58,7 @@ const Cycle = () => {
                 </div>
               </div>
               <div className="p-4">
-                <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3">{item.description}</p>
+                <p className="text-sm text-slate-700 dark:text-gray-300 line-clamp-3">{item.description}</p>
                 <div className="mt-4 flex justify-end">
                   <Button variant="outline" className="text-sm">En savoir plus</Button>
                 </div>
@@ -67,7 +67,7 @@ const Cycle = () => {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 

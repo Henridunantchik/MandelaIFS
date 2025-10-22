@@ -33,9 +33,9 @@ const MissionValeur = () => {
   const [active, setActive] = useState('Excellence académique')
 
   return (
-    <section className="py-16 md:py-20 bg-white dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4">
-        
+    <div>
+      <div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {/* Mission */}
           <div className="rounded-xl shadow-md overflow-hidden bg-white dark:bg-gray-900 border border-slate-200/70 dark:border-gray-800">
@@ -46,15 +46,15 @@ const MissionValeur = () => {
               <h3 className="text-3xl md:text-4xl font-bold text-center mb-6 text-slate-900 dark:text-white">Mission de l’école</h3>
               <p className="leading-7 text-slate-700 dark:text-gray-300">
                 Notre mission est d’offrir une éducation de qualité alliant le programme congolais aux standards internationaux, afin de former des citoyens du monde compétents, responsables et ouverts aux diversités culturelles.
-                Nous nous engageons à développer chez chaque élève la curiosité intellectuelle, la rigueur, la créativité et le sens du leadership.  
+                Nous nous engageons à développer chez chaque élève la curiosité intellectuelle, la rigueur, la créativité et le sens du leadership.
               </p>
               <p className="leading-7 text-slate-700 dark:text-gray-300 mt-3">
-               Au cœur de notre pédagogie se trouvent l’excellence académique, le respect, et le développement durable, valeurs essentielles pour bâtir un avenir équilibré et solidaire. Nous favorisons un environnement d’apprentissage inclusif et stimulant, où chaque enfant apprend à penser par lui-même, à collaborer et à contribuer positivement à la société.
+                Au cœur de notre pédagogie se trouvent l’excellence académique, le respect, et le développement durable, valeurs essentielles pour bâtir un avenir équilibré et solidaire. Nous favorisons un environnement d’apprentissage inclusif et stimulant, où chaque enfant apprend à penser par lui-même, à collaborer et à contribuer positivement à la société.
               </p>
               <p className="leading-7 text-slate-700 dark:text-gray-300 mt-3">
-               Ainsi, le Complexe Scolaire Mandela prépare ses élèves à réussir dans un monde en constante évolution.
+                Ainsi, le Complexe Scolaire Mandela prépare ses élèves à réussir dans un monde en constante évolution.
               </p>
-              
+
               <div className="mt-8 flex justify-center">
                 <Button className="rounded-full bg-amber-500 hover:bg-amber-400 text-white px-6">En savoir plus</Button>
               </div>
@@ -75,11 +75,10 @@ const MissionValeur = () => {
                   <button
                     key={key}
                     onClick={() => setActive(key)}
-                    className={`px-3 py-1.5 rounded-full text-sm transition border ${
-                      active === key
-                        ? 'bg-teal-500 text-white border-teal-500 shadow-sm'
-                        : 'bg-transparent text-slate-700 dark:text-gray-200 border-slate-300/60 dark:border-gray-700 hover:bg-slate-100/60 dark:hover:bg-gray-800'
-                    }`}
+                    className={`px-3 py-1.5 rounded-full text-sm transition border ${active === key
+                      ? 'bg-teal-500 text-white border-teal-500 shadow-sm'
+                      : 'bg-transparent text-slate-700 dark:text-gray-200 border-slate-300/60 dark:border-gray-700 hover:bg-slate-100/60 dark:hover:bg-gray-800'
+                      }`}
                   >
                     {key}
                   </button>
@@ -99,7 +98,7 @@ const MissionValeur = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 

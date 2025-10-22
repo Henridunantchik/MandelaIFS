@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Logo from '../assets/logo.png'
 import { FaFacebook, FaInstagram, FaPinterest, FaTwitterSquare } from 'react-icons/fa'
 import { NAV_MENU } from '@/constants/navMenu'
+import FooterAttribution from './FooterAttribution'
 
 const Footer = ({
   schoolName = 'Mandela IFS',
@@ -31,7 +32,7 @@ const Footer = ({
         <div className='grid grid-cols-1 lg:grid-cols-4 gap-10 pb-10 border-b border-gray-800'>
           <div className='lg:col-span-1'>
             <Link to='/' className='flex items-center gap-3'>
-              <img src={Logo} alt='' className='invert w-12 h-12'/>
+              <img src={Logo} alt='' className='invert w-12 h-12' />
               <h1 className='text-2xl md:text-3xl font-bold'>{schoolName}</h1>
             </Link>
             <p className='mt-3 text-sm text-gray-300 leading-6'>{description}</p>
@@ -41,10 +42,10 @@ const Footer = ({
               <p className='text-gray-400'>Téléphone: <a className='hover:text-white' href={`tel:${phone}`}>{phone}</a></p>
             </div>
             <div className='flex items-center gap-4 mt-4 text-xl'>
-              <a href={social.facebook} aria-label='Facebook' className='opacity-80 hover:opacity-100'><FaFacebook/></a>
-              <a href={social.instagram} aria-label='Instagram' className='opacity-80 hover:opacity-100'><FaInstagram/></a>
-              <a href={social.twitter} aria-label='Twitter' className='opacity-80 hover:opacity-100'><FaTwitterSquare/></a>
-              <a href={social.pinterest} aria-label='Pinterest' className='opacity-80 hover:opacity-100'><FaPinterest/></a>
+              <a href={social.facebook} aria-label='Facebook' className='opacity-80 hover:opacity-100'><FaFacebook /></a>
+              <a href={social.instagram} aria-label='Instagram' className='opacity-80 hover:opacity-100'><FaInstagram /></a>
+              <a href={social.twitter} aria-label='Twitter' className='opacity-80 hover:opacity-100'><FaTwitterSquare /></a>
+              <a href={social.pinterest} aria-label='Pinterest' className='opacity-80 hover:opacity-100'><FaPinterest /></a>
             </div>
           </div>
 
@@ -81,6 +82,9 @@ const Footer = ({
             &copy; {new Date().getFullYear()} <span className='text-gray-200 font-semibold'>{schoolName}</span>. Tous droits réservés.
           </p>
         </div>
+
+        {/* Attribution */}
+        <FooterAttribution />
       </div>
     </footer>
   )

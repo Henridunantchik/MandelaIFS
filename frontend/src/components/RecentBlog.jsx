@@ -37,26 +37,26 @@ const RecentBlog = ({ limit = 4 }) => {
     }, [mainCategory, tag])
 
     return (
-        <div className='bg-gray-100 dark:bg-gray-800 pb-10'>
+        <div className='pb-10'>
             <div className='max-w-6xl mx-auto  flex flex-col space-y-4 items-center'>
-                <h1 className='text-4xl font-bold pt-10 '>Blogs et Nouvelles</h1>
+                <h1 className='text-3xl md:text-4xl font-bold pt-10 text-slate-900 dark:text-white'>Blogs et Nouvelles</h1>
                 <hr className=' w-24 text-center border-2 border-red-500 rounded-full' />
             </div>
             <div className='max-w-7xl mx-auto flex gap-6'>
                 <div>
                     <div className='mt-10 px-4 md:px-0'>
                         <div className='mb-4 flex flex-wrap gap-2'>
-                            {MAIN_CATEGORIES.filter(c=>c!=='Uncategorized').map((c)=>(
-                                <button key={c} onClick={()=>{ setMainCategory(prev=>prev===c?"":c); setTag("") }} className={`px-3 py-1 rounded-md text-sm border ${mainCategory===c ? 'bg-gray-900 text-white dark:bg-gray-200 dark:text-gray-900' : 'bg-white dark:bg-gray-700'}`}>{c}</button>
+                            {MAIN_CATEGORIES.filter(c => c !== 'Uncategorized').map((c) => (
+                                <button key={c} onClick={() => { setMainCategory(prev => prev === c ? "" : c); setTag("") }} className={`px-3 py-1 rounded-md text-sm border ${mainCategory === c ? 'bg-gray-900 text-white dark:bg-gray-200 dark:text-gray-900' : 'bg-white dark:bg-gray-700'}`}>{c}</button>
                             ))}
                         </div>
                         {mainCategory && (
                             <div className='mb-6 flex flex-wrap gap-2'>
-                                {(SUBCATEGORIES_MAP[mainCategory]||[]).map((t)=>(
-                                    <button key={t} onClick={()=> setTag(prev=>prev===t?"":t)} className={`px-3 py-1 rounded-md text-sm border ${tag===t ? 'bg-gray-900 text-white dark:bg-gray-200 dark:text-gray-900' : 'bg-white dark:bg-gray-700'}`}>{t}</button>
+                                {(SUBCATEGORIES_MAP[mainCategory] || []).map((t) => (
+                                    <button key={t} onClick={() => setTag(prev => prev === t ? "" : t)} className={`px-3 py-1 rounded-md text-sm border ${tag === t ? 'bg-gray-900 text-white dark:bg-gray-200 dark:text-gray-900' : 'bg-white dark:bg-gray-700'}`}>{t}</button>
                                 ))}
-                                {TRANSVERSAL_TAGS.map((t)=>(
-                                    <button key={t} onClick={()=> setTag(prev=>prev===t?"":t)} className={`px-3 py-1 rounded-md text-sm border ${tag===t ? 'bg-gray-900 text-white dark:bg-gray-200 dark:text-gray-900' : 'bg-white dark:bg-gray-700'}`}>{t}</button>
+                                {TRANSVERSAL_TAGS.map((t) => (
+                                    <button key={t} onClick={() => setTag(prev => prev === t ? "" : t)} className={`px-3 py-1 rounded-md text-sm border ${tag === t ? 'bg-gray-900 text-white dark:bg-gray-200 dark:text-gray-900' : 'bg-white dark:bg-gray-700'}`}>{t}</button>
                                 ))}
                             </div>
                         )}
@@ -69,13 +69,13 @@ const RecentBlog = ({ limit = 4 }) => {
 
                 </div>
                 <NewsletterSidebar
-                  mainCategory={mainCategory}
-                  onSelectCategory={(c)=>{ setMainCategory(c); setTag("") }}
-                  onSelectTag={(t)=> setTag(t)}
+                    mainCategory={mainCategory}
+                    onSelectCategory={(c) => { setMainCategory(c); setTag("") }}
+                    onSelectTag={(t) => setTag(t)}
                 />
             </div>
         </div>
     )
-} 
+}
 
 export default RecentBlog

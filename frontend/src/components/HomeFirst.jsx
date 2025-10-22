@@ -6,18 +6,18 @@ const HomeFirst = () => {
   return (
     <>
       {/* Marketing section moved below hero */}
-      <section className='py-12 md:py-16 bg-white dark:bg-gray-900'>
+      <div>
 
-          {/* <div className='max-w-6xl mx-auto px-4'>
+        {/* <div className='max-w-6xl mx-auto px-4'>
           <div className='h-px w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent dark:via-gray-700 mb-10'></div>
         </div> */}
-      
-        <div className='max-w-4xl mx-auto px-4 text-center'>
-          <h2 className='text-3xl md:text-5xl font-bold mb-4'>Qualité • Respect • Différence</h2>
-          <p className='text-base md:text-lg text-muted-foreground mb-6'>
+
+        <div className='text-center'>
+          <h2 className='text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white'>Qualité • Respect • Différence</h2>
+          <p className='text-base md:text-lg text-slate-700 dark:text-gray-300 mb-6'>
             Mandella International French School : une école pour bâtir l’avenir, ensemble.
           </p>
-                    <div className='h-px w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent dark:via-gray-700 mb-10'></div>
+          <div className='h-px w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent dark:via-gray-700 mb-10'></div>
 
           <div className='flex flex-wrap gap-4 md:gap-6 justify-center'>
             <Link to={'/'}>
@@ -34,8 +34,8 @@ const HomeFirst = () => {
         </div>
 
 
-        
-      </section>
+
+      </div>
     </>
   )
 }

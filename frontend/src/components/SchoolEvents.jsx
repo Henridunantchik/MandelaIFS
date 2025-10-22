@@ -48,7 +48,7 @@ function formatDate(d) {
 
 const SchoolEvents = ({
   title = "Événements de l’école",
-  subtitle = "Restez informé des prochains rendez‑vous", 
+  subtitle = "Restez informé des prochains rendez‑vous",
   events = SAMPLE_EVENTS,
 }) => {
   const trackRef = useRef(null)
@@ -62,12 +62,12 @@ const SchoolEvents = ({
   }
 
   return (
-    <section className="py-12 md:py-16 bg-white dark:bg-gray-950">
-      <div className="max-w-7xl mx-auto px-4">
+    <div>
+      <div>
         <div className="flex items-center justify-between gap-4 mb-6">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold">{title}</h2>
-            <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base">{subtitle}</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">{title}</h2>
+            <p className="text-slate-600 dark:text-gray-400 text-sm md:text-base">{subtitle}</p>
           </div>
           <div className="flex gap-2">
             <button
@@ -100,7 +100,7 @@ const SchoolEvents = ({
             >
               <div className="p-5 md:p-6 flex gap-4">
                 <div className="shrink-0 flex flex-col items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-lg bg-red-50 text-red-700 dark:bg-red-900/20 dark:text-red-200 border border-red-100/60 dark:border-red-800/50">
-                  <div className="text-base md:text-lg font-bold leading-none">{new Date(ev.date).getDate().toString().padStart(2,'0')}</div>
+                  <div className="text-base md:text-lg font-bold leading-none">{new Date(ev.date).getDate().toString().padStart(2, '0')}</div>
                   <div className="text-[10px] md:text-xs uppercase tracking-wide">{new Date(ev.date).toLocaleString(undefined, { month: 'short' })}</div>
                   <div className="text-[9px] md:text-[10px] opacity-70">{new Date(ev.date).getFullYear()}</div>
                 </div>
@@ -134,7 +134,7 @@ const SchoolEvents = ({
           ))}
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 
